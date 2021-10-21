@@ -44,7 +44,7 @@ export interface {{@key}} {
     {{#if this.requestStream}}
     {{uncapitalize @key}}(data: Observable<{{this.requestType}}>, metadata?: Metadata): Observable<{{this.responseType}}>;
     {{else}}
-    {{uncapitalize @key}}(data: {{this.requestType}}, metadata?: Metadata): Observable<{{this.responseType}}>;
+    {{uncapitalize @key}}(data: {{this.requestType}}, metadata?: Metadata): Promise<{{this.responseType}}> | {{this.responseType}};
     {{/if}}
 {{/each}}
 }

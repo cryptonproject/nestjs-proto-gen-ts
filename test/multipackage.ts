@@ -11,7 +11,7 @@ export namespace multipackage {
         export interface Multipackage {
             // Test comment
         // Test comment
-            multipackageRpc(data: MultipackageRequest, metadata?: Metadata): Observable<MultipackageResponse>;
+            multipackageRpc(data: MultipackageRequest, metadata?: Metadata): Promise<MultipackageResponse> | MultipackageResponse;
         }
         // Test comment
         export interface MultipackageRequest {

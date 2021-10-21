@@ -48,7 +48,7 @@ import { Metadata } from '@grpc/grpc-js';
 
 export namespace hero {
     export interface HeroesService {
-        findOne(data: HeroById, metadata?: Metadata): Observable<Hero>;
+        findOne(data: HeroById, metadata?: Metadata): Promise<Hero> | Hero;
     }
     export interface HeroById {
         id?: number;
@@ -70,7 +70,7 @@ type HeroById = hero.HeroById;
 @Controller()
 export class HeroesController implements hero.HeroesService {
   @GrpcMethod('HeroesService', 'FindOne')
-  findOne(data: HeroById, meta: Metadata): Observable<hero.Hero> {
+  findOne(data: HeroById, meta: Metadata): hero.Hero {
     const items = [
       { id: 1, name: 'John' },
       { id: 2, name: 'Doe' },
